@@ -4,6 +4,10 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { demo1Modulehello } from './components/demo/demo1/demo1.module';
+import { LoginModule } from './components/login/login.module';
+import { ChatRoomsModule } from './components/chat-rooms/chat-rooms.module';
+import { ChatModule } from './components/chat/chat.module';
+import { ChatApiService } from './services/chat-api.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +16,12 @@ import { demo1Modulehello } from './components/demo/demo1/demo1.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    demo1Modulehello
+    demo1Modulehello,
+    LoginModule,
+    ChatRoomsModule,
+    ChatModule
   ],
-  providers: [
+  providers: [ChatApiService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
