@@ -8,12 +8,15 @@ import { LoginModule } from './components/login/login.module';
 import { ChatRoomsModule } from './components/chat-rooms/chat-rooms.module';
 import { ChatModule } from './components/chat/chat.module';
 import { ChatApiService } from './services/chat-api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    HttpClientModule, // Add HttpClientModule to imports
+
     BrowserModule,
     AppRoutingModule,
     demo1Modulehello,
@@ -21,7 +24,8 @@ import { ChatApiService } from './services/chat-api.service';
     ChatRoomsModule,
     ChatModule
   ],
-  providers: [ChatApiService,
+  providers: [
+    ChatApiService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

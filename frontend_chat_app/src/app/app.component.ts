@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend_chat_app';
+
+  fun(str:string){
+    console.log("hello", str)
+  }
+
+  test() {
+    console.log('Test button clicked!');
+  }
+
 }
