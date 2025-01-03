@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChatRoomsComponent } from './components/chat-rooms/chat-rooms.component';
-import { ChatComponent } from './components/chat/chat.component';
+import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ChatRoomComponent } from './components/chat-room/chat-room.component';
+import { AuthGuard } from './guards/auth.guard';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'chat-rooms', component: ChatRoomsComponent },
-  { path: 'chat/:id', component: ChatComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', component: NotFoundComponent }, // Wildcard route for a 404 page
-
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'chat', component: ChatRoomComponent, canActivate: [AuthGuard] },
 ];
 
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    FormsModule, // Add FormsModule to imports
+    RouterModule.forRoot(routes),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
